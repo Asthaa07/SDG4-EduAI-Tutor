@@ -1,18 +1,17 @@
-// script.js
-async function askAI() {
+async function askAI() {
     const inputField = document.getElementById('userInput');
     const chatbox = document.getElementById('chatbox');
     const userText = inputField.value.trim();
     
     if (!userText) return;
 
-    // User ka message screen par dikhao
+   
     chatbox.innerHTML += `<div class="message user-msg">${userText}</div>`;
     
     inputField.value = '';
     chatbox.scrollTop = chatbox.scrollHeight;
 
-    // AI ki taraf se "Typing..." dikhao
+    
     const typingId = "typing-" + Date.now();
     chatbox.innerHTML += `<div id="${typingId}" class="message ai-msg">Typing...</div>`;
     chatbox.scrollTop = chatbox.scrollHeight;
@@ -23,7 +22,7 @@ async function askAI() {
         let aiResponse = "";
         let lowerInput = userText.toLowerCase();
 
-        // Alag-alag questions ke hisaab se alag answers
+       
         if (lowerInput.includes("hello") || lowerInput.includes("hi")) {
             aiResponse = "Hello! Aaj hum kya padhein? Tum kisi bhi computer science topic ya general study ke bare me pooch sakti ho.";
         } 
@@ -43,13 +42,13 @@ async function askAI() {
             aiResponse = "Ye ek accha sawal hai. Is topic ke deep concepts ko samajhne ke liye tumhe iske basics clear karne honge. Kya tum iska ek example dekhna chahti ho?";
         }
         
-        // Final AI response screen par dikhao
+       
         chatbox.innerHTML += `<div class="message ai-msg">${aiResponse}</div>`;
         chatbox.scrollTop = chatbox.scrollHeight;
     }, 1500); 
 }
 
-// "Enter" dabane par message send ho jaye
+
 document.getElementById('userInput').addEventListener('keypress', function (e) {
     if (e.key === 'Enter') {
         askAI();
